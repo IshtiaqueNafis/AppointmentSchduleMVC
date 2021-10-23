@@ -1,4 +1,5 @@
-﻿@model AppointmentSchduleMVC.Models.ViewModels.Register 
+﻿@using AppointmentSchduleMVC.Utils
+@model AppointmentSchduleMVC.Models.ViewModels.Register 
 
 <h2>Sign Up</h2>
 <form method="post" asp-action="Register" asp-controller="Account">
@@ -39,7 +40,7 @@
         <label class="col-md-2" asp-for="RoleName"></label>
         <div class=" col-md-10">
             <select asp-for="RoleName"
-                    asp-items="@AppointmentSchduleMVC.Helper.Helper.GetRolesForDropDown()"
+                    asp-items="@Helper.GetRolesForDropDown()"
                     class="form-control"></select>
             <span asp-validation-for="RoleName" class="text-danger"></span>
         </div>

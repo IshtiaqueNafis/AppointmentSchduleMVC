@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AppointmentSchduleMVC.Helper
+namespace AppointmentSchduleMVC.Utils
 {
     public static class Helper
     {
