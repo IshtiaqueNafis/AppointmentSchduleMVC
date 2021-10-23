@@ -9,7 +9,16 @@ Microsoft.AspNetCore.Identity.SignInManager<Microsoft.AspNetCore.Identity.Identi
 *@
 @if (_signInManager.IsSignedIn(User))
 {
-    
+    <form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Account">
+        <ul class="nav navbar-nav">
+            <li class="text-white nav-link">Hello, @User.Identity.Name </li>
+            <!-- users.identity is coming from name  -->
+
+            <li class="nav-link">
+                <a class="text-white" href="javascript:document.getElementById('logoutForm').submit()">LogOff</a>
+            </li>
+        </ul>
+    </form>
 }
 else 
     @*Means user is not signed in  *@
@@ -18,10 +27,9 @@ else
         <li>
             <a class="nav-link text-white" id="registerLink" asp-controller="Account" asp-action="Register">Register</a>
         </li>
-        
+
         <li>
-                    <a class="nav-link text-white" id="registerLink" asp-controller="Account" asp-action="Login">Log in</a>
+            <a class="nav-link text-white" id="registerLink" asp-controller="Account" asp-action="Login">Log in</a>
         </li>
     </ul>
 }
-

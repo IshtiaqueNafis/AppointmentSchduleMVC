@@ -13,6 +13,7 @@ namespace AppointmentSchduleMVC.Controllers
         private readonly ApplicationDbContext _db; // this gives connection to database 
         UserManager<ApplicationUser> _userManager; //manages user thus creates user 
         SignInManager<ApplicationUser> _signInManager; // signs in and signs out user 
+
         RoleManager<IdentityRole> _roleManager; //this for role such as admin,doctor and patient 
         // note that <ApplicationUser> is a custom user class is being used to register user and log in user 
 
@@ -26,7 +27,7 @@ namespace AppointmentSchduleMVC.Controllers
             _roleManager = roleManager;
         }
 
-        #region Logs IN USER.
+        #region Logs IN USER Get
 
         public IActionResult Login()
         {
@@ -34,6 +35,30 @@ namespace AppointmentSchduleMVC.Controllers
         }
 
         #endregion
+
+        #region Logs IN USER Post
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LogInViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result =
+                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                // model.RememberMe --> it will save cookie when the browser closes. 
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", "invalid log in attempt");
+            }
+
+            return View(model);
+        }
+
+        #endregion
+
 
         #region Register USER GET
 
@@ -77,7 +102,7 @@ namespace AppointmentSchduleMVC.Controllers
                     Email = model.Email,
                     Name = model.Name,
                 };
-                var result = await _userManager.CreateAsync(user); // this creates a user 
+                var result = await _userManager.CreateAsync(user, model.Password); // this creates a user  password is needed 
 
                 if (result.Succeeded) // means nothing went wrong 
                 {
@@ -87,9 +112,27 @@ namespace AppointmentSchduleMVC.Controllers
 
                     return RedirectToAction("Index", "Home"); // if its sucessful return there. 
                 }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("",
+                        error.Description); // adds error to check if there is any error at all. 
+                }
             }
 
-            return View();
+            return View(model);
+        }
+
+        #endregion
+
+
+        #region Log OFF
+
+        [HttpPost]
+        public async Task<IActionResult> Logoff()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
         }
 
         #endregion
