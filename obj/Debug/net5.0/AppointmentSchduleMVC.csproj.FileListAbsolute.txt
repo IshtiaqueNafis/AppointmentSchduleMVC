@@ -387,3 +387,6 @@ C:\Users\nafu1\source\repos\AppointmentSchduleMVC\obj\Debug\net5.0\AppointmentSc
 C:\Users\nafu1\source\repos\AppointmentSchduleMVC\obj\Debug\net5.0\ref\AppointmentSchduleMVC.dll
 C:\Users\nafu1\source\repos\AppointmentSchduleMVC\obj\Debug\net5.0\AppointmentSchduleMVC.pdb
 C:\Users\nafu1\source\repos\AppointmentSchduleMVC\obj\Debug\net5.0\AppointmentSchduleMVC.genruntimeconfig.cache
+C:\Users\nafu1\source\repos\AppointmentSchduleMVC\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\nafu1\source\repos\AppointmentSchduleMVC\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\nafu1\source\repos\AppointmentSchduleMVC\obj\Debug\net5.0\Razor\Views\Shared\_LogInPartial.cshtml.g.cs

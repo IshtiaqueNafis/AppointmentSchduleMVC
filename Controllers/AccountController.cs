@@ -13,7 +13,12 @@ namespace AppointmentSchduleMVC.Controllers
         }
 
         // GET
-        public IActionResult Index()
+        public IActionResult Login()
+        {
+            return View();
+        }
+        
+        public IActionResult Register()
         {
             return View();
         }

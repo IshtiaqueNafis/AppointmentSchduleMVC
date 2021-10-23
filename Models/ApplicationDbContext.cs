@@ -7,7 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AppointmentSchduleMVC.Models
 {
-    public class ApplicationDbContext:IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+        // means idenity db contenxt get additional property from Application Db context. hfbd                                                      3                           `   
+                         
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
